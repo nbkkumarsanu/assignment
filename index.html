@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>JavaScript Form Validation using a sample registration form</title>
+<meta name="keywords" content="example, JavaScript Form Validation, Sample registration form" />
+<meta name="description" content="This document is an example of JavaScript Form Validation using a sample registration form. " />
+<link rel='stylesheet' href='js-form-validation.css' type='text/css' />
+<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+<script src="sample-registration-form-validation.js"></script>
+<link rel="stylesheet" href="newcss.css"/>
+</head>
+<body onload="document.registration.userid.focus();">
+
+<div class="abc">
+    <h1 style="text-align: center;">Technical Assignment</h1>   <br><br>
+<form name='registration' onSubmit="return formValidation();">
+    <img src="tum.png" width="80" height="80" alt="alt"/>
+    <header>
+<label for="firstname">FirstName:</label>
+<input type="text" name="firstname"/><br><br>
+<label for="email">Email:</label>
+<input type="email" name="email"  /><br><br>
+<label>Phone Number:</label>
+<input id="phone" type="tel" name="phone" />
+<input type="submit" class="btn" value="Validate" /><br><br>
+<label for="description">Description:</label>
+<textarea name="description"></textarea><br><br>
+<input type="button" onclick="display_alert()" value="SUBMIT" class="xyz">
+    </header>
+</form>
+    <div class="alert alert-info" style="display: none"></div>
+      <div class="alert alert-error" style="display: none"></div>
+</div>
+    <script>
+ function display_alert()
+ {
+ alert("welcome in PERCOY0");
+ }
+ </script>
+
+ <script>
+    const phoneInputField = document.querySelector("#phone");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+      utilsScript:
+        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+
+    const info = document.querySelector(".alert-info");
+    const error = document.querySelector(".alert-error");
+
+    function process(event) {
+      event.preventDefault();
+
+      const phoneNumber = phoneInput.getNumber();
+
+      info.style.display = "";
+      info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;
+    }
+  </script>
+ 
+ </body>
+
+</html>
